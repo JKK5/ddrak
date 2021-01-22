@@ -1,5 +1,5 @@
-.day-grid,
-.date-grid {
+.calendar-day-grid,
+.calendar-date-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr)
 }
