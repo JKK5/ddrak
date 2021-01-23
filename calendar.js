@@ -19,6 +19,11 @@ const months = [
 ];
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+let state = {
+  year: new Date().getFullYear(),
+  month: new Date().getMonth(),
+};
+
 function getDateGrid(year, month) {
   let dates = [];
   const firstDay = new Date(year, month).getDay();
@@ -46,18 +51,34 @@ function render() {
   const calendar = document.querySelector(".calendar");
   calendar.innerHTML = `
     <div class="calendar-nav">
-      <button>Prev</button>
-      <h2>${months[month]} ${year}</h2>
-      <button>Next</button>
+      <button id="prevMonth">Prev</button>
+      <h2>${months[state.month]} ${state.year}</h2>
+      <button id="nextMonth">Next</button>
     </div>
     <div class="calendar-day-grid">
       ${daysOfWeek.map((day) => `<div>${day}</div>`).join("")}
     </div>
     <div class="calendar-date-grid">
-      ${getDateGrid(year, month)
+      ${getDateGrid(state.year, state.month)
         .map((date) => `<div class="${date.monthClass}">${date.date}</div>`)
         .join("")}
     </div>
   `;
 }
-render();
+
+function showCalendar(prevNextInd) {
+  const date = new Date(state.year, state.month + prevNextInd);
+  state.month = date.getMonth();
+  state.year = date.getFullYear();
+  render();
+}
+
+showCalendar(0);
+
+document.addEventListener("click", function (event) {
+  if (event.target.id === "prevMonth") {
+    showCalendar(-1);
+  } else if (event.target.id === "nextMonth") {
+    showCalendar(1);
+  }
+});

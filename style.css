@@ -3,3 +3,11 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr)
 }
+
+.prev, .next {
+  color: lightgray;
+}
+
+button {
+  cursor: pointer;
+}
