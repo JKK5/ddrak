@@ -58,6 +58,8 @@ function getDateGrid(year, month) {
   return dates;
 }
 
+let monthCnt = 0;
+
 function render() {
   const calendar = document.querySelector(".calendar");
   calendar.innerHTML = `
@@ -65,6 +67,7 @@ function render() {
       <h2>${months[state.month]} ${state.year}</h2>
       <button id="prevMonth">Prev</button>
       <button id="nextMonth">Next</button>
+      <button id="todayMonth" ${monthCnt === 0 ? "disabled" : ""}>Today</button>
     </div>
     <div class="calendar-day-grid">
       ${daysOfWeek.map((day) => `<div>${day}</div>`).join("")}
@@ -86,6 +89,7 @@ function showCalendar(prevNextInd) {
   const date = new Date(state.year, state.month + prevNextInd);
   state.month = date.getMonth();
   state.year = date.getFullYear();
+  monthCnt -= prevNextInd;
   render();
 }
 
@@ -97,6 +101,8 @@ function init() {
       showCalendar(-1);
     } else if (event.target.id === "nextMonth") {
       showCalendar(1);
+    } else if (event.target.id === "todayMonth") {
+      showCalendar(monthCnt);
     }
   });
 }
