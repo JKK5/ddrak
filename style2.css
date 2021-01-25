@@ -1,0 +1,20 @@
+button {
+  cursor: pointer;
+}
+
+
+.calendar-date-grid,
+.calendar-time-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  text-align: center;
+}
+
+.prev, .next {
+  color: lightgray;
+}
+
+.today {
+  background-color: bisque;
+  font-weight: bold;
+}
