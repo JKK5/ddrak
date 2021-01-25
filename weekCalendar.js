@@ -68,6 +68,14 @@ let weekCnt = 0;
 function render() {
   const calendar = document.querySelector(".calendar");
   calendar.innerHTML = `
+    <div class="calendar-switch">
+      <form action="index.html">
+        <input type="submit" value="Monthly" />
+      </form>
+      <form action="index2.html">
+        <input type="submit" value="Weekly" />
+      </form>
+    </div>
     <div class="calendar-nav">
       <h2>${getTitle()}</h2>
       <button id="prevWeek">Prev</button>
@@ -94,7 +102,6 @@ function showCalendar(prevNextInd) {
 
 function init() {
   showCalendar(0);
-  console.log;
 
   document.addEventListener("click", function (event) {
     if (event.target.id === "prevWeek") {

@@ -63,6 +63,14 @@ let monthCnt = 0;
 function render() {
   const calendar = document.querySelector(".calendar");
   calendar.innerHTML = `
+    <div class="calendar-switch">
+      <form action="index.html">
+        <input type="submit" value="Monthly" />
+      </form>
+      <form action="index2.html">
+        <input type="submit" value="Weekly" />
+      </form>
+    </div>
     <div class="calendar-nav">
       <h2>${months[state.month]} ${state.year}</h2>
       <button id="prevMonth">Prev</button>

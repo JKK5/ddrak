@@ -2,6 +2,10 @@ button {
   cursor: pointer;
 }
 
+.calendar-switch form {
+  display: inline;
+}
+
 .calendar-day-grid,
 .calendar-date-grid {
   display: grid;
